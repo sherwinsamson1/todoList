@@ -14,7 +14,10 @@ app.use(express.static("public"))
 
 
 // MongoDB Setup & Schemas
+
 mongoose.connect('mongodb+srv://'+process.env.DB_USER+':'+process.env.DB_PASSWORD+'@cluster0.rwjur.mongodb.net/todoDB?retryWrites=true&w=majority', {useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false})
+.catch(error => {console.log(error)})
+
 const Schema = mongoose.Schema
 const itemsSchema = new Schema({
   name: String
